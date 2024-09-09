@@ -40,6 +40,7 @@ def inscription(request):
             if form.is_valid():
                 user = form.save()
                 login(request,user)
+                messages.success(request,'votre compte a été cree avec succes ')
                 return redirect('articles:article_view')
         else:
             form = InscriptionForm()
