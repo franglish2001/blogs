@@ -1,0 +1,144 @@
+  footer {
+        margin-top: 50px;
+        height: 100px;
+      }
+      main {
+        min-height: 70vh;
+      }
+      
+/* delete dialog */
+.dialog-confirm {
+    text-align: center;
+    background-color: rgb(211, 224, 236);
+    width: 420px;
+    margin: 50px;
+    padding: 10px;
+    border-radius: 12px;
+  }
+
+  /* ============================================= */
+/* l'affichage des articles par categories */
+/* ============================================= */
+
+ .list-group-item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+  }
+  .list-group-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  .list-group-item i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+  }
+  .list-group-item h4 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #333;
+  }
+  .list-group-item .btn {
+    margin: 0 5px;
+  }
+  .btn-info {
+    background-color: #17a2b8;
+    border-color: #17a2b8;
+  }
+  .btn-info:hover {
+    background-color: #138496;
+    border-color: #117a8b;
+  }
+  .btn-warning {
+    background-color: #ffc107;
+    border-color: #ffc107;
+  }
+  .btn-warning:hover {
+    background-color: #e0a800;
+    border-color: #d39e00;
+  }
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  .btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+  }
+/* =============================================
+============================================= */
+
+
+  /* ============================================= */
+/* la partie commentaire */
+/* ============================================= */
+  .comments-section {
+    margin-top: 20px;
+  }
+  .card {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    border: none;
+    margin-right: 25px;
+
+  }
+  .card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    font-weight: bold;
+    font-size: 1.1rem;
+    border-radius: 10px 10px 0 0;
+    padding: 15px;
+  }
+  .card-body {
+    padding: 15px;
+  }
+  .blockquote {
+    margin: 0;
+    border-left: 4px solid #007bff;
+    padding-left: 15px;
+    color: #495057;
+  }
+  .blockquote-footer {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+  .no-comments {
+    text-align: center;
+    margin-top: 20px;
+    color: #6c757d;
+    font-size: 1.1rem;
+  }
+/* =============================================
+============================================= */
+
+  /* ============================================= */
+/* voir les articles */
+/* ============================================= */
+
+  .search {
+    text-align: center;
+    padding: 20px;
+  }
+  .search form input {
+    border-radius: 8px;
+  }
+  .article-content {
+    margin: 10px;
+  }
+  .article-content:hover {
+    box-shadow: 1px 1px 1px rgb(147, 146, 146);
+    border: 1px 1px rgb(143, 199, 234);
+  }
+  .image-article {
+    height: 200px;
+  }
+
+  /* =============================================
+============================================= */
