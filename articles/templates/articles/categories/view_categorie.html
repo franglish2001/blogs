@@ -1,0 +1,35 @@
+{% extends 'articles/base.html' %}
+{% block title %} Voir les catégories {% endblock %}
+{% block content %}
+<style>
+ 
+</style>
+
+<div class="container mt-4">
+  <h1 class="mb-4 text-center">Gestion des Catégories</h1>
+  <ul class="list-group">
+    {% for categorie in categories %}
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      <div class="d-flex align-items-center">
+        <i class="bi bi-bookmark-check-fill"></i>
+        <h4 class="mb-0">{{ categorie.title }}</h4>
+      </div>
+      <div>
+        <a class="btn btn-info btn-sm" href="{% url 'articles:article_by_categorie' categorie.pk %}">
+          <i class="bi bi-pencil-fill"></i> Voir les articles
+        </a>
+        {%if user.is_authenticated and user == categorie.user%}
+        <a class="btn btn-warning btn-sm" href="{% url 'articles:update_categorie' categorie.pk %}">
+          <i class="bi bi-pencil-fill"></i> Modifier
+        </a>
+        <a class="btn btn-danger btn-sm" href="{% url 'articles:delete_categorie' categorie.pk %}">
+          <i class="bi bi-trash3-fill"></i> Supprimer
+        </a>
+        {%endif%}
+      </div>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+
+{% endblock %}

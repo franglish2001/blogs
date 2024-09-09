@@ -1,0 +1,92 @@
+{%extends 'articles/base.html'%} {%block title %} Voir les articles {%endblock%}
+{%block content%}
+<style>
+  h1 {
+    text-align: center;
+    margin-top: 10px;
+  }
+</style>
+<h1>Les Article</h1>
+<div class="search">
+  <form method="GET" action="">
+    <input type="text" name="searchvalue" placeholder="Rechercher..." />
+    <button type="submit" class="btn btn-info">
+      <i class="bi bi-search"></i> Rechercher
+    </button>
+  </form>
+</div>
+<div class="container-fluid d-flex flex-wrap justify-content-center">
+  {%if articles%} {%for article in articles%} {%if article.publiche%}
+  <div class="card article-content" style="width: 18rem">
+    {%if article.imagearticle%}
+    <img
+      src="{{article.imagearticle.url}}"
+      class="card-img-top img-fluid image-article"
+      alt="{{article.imagearticle.url}}" 
+    />
+    {%else%}
+    <img src="" class="card-img-top" alt="altilce image" />
+    {%endif%}
+    <div class="card-body">
+      <h5 class="card-title">{{article.title}}</h5>
+      <small>{{article.date_pub}}</small>
+      <p class="card-text">{{article.sumary}}</p>
+      <a
+        href="{%url 'articles:article_detail' article.pk%}"
+        class="btn btn-primary"
+        >Lire l'article</a
+      >
+    </div>
+
+    {%endif%}
+  </div>
+  {%endfor%} {%else%}
+  <p>Pas d'article disponible</p>
+  {%endif%}
+
+  <!-- affichage des messages de success et error-->
+  {%if messages%}
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    {%for message in messages%}
+      <div class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <img src="..." class="rounded me-2" alt="..." />
+      <strong class="me-auto">Deconnexion</strong>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="toast"
+        aria-label="Close"
+      ></button>
+    </div>
+    <div class="toast-body">Vous avez été deconnecter avec succes</div>
+     </div>
+     {%endfor%}
+  </div>
+  {%endif%}
+</div>
+
+  <!-- la page de pagination -->
+   <div class="container d-flex justify-content-center">
+
+   <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1" style="margin-right:10px ;">&laquo; Premier</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Precedent</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}" style="margin-right:10px ;">Suivant</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Dernier &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+</div>
+
+
+{%endblock%}

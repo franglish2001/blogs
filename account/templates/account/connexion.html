@@ -1,0 +1,92 @@
+{% extends 'account/base.html' %} {% block content %}
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card shadow-lg rounded">
+        <div class="card-body p-4">
+          <a href="{% url 'articles:article_view' %}" class="btn btn-info mb-3"
+            ><i class="bi bi-arrow-left"></i> Retour</a
+          >
+
+          <h1 class="text-center mb-4">Connexion</h1>
+
+          <!-- Affichage des messages d'erreur et de succès -->
+          {% if messages %}
+          <div class="alert-container mb-3">
+            <ul class="list-unstyled">
+              {% for message in messages %}
+              <li class="alert alert-danger">{{ message }}</li>
+              {% endfor %}
+            </ul>
+          </div>
+          {% endif %}
+
+          <form method="post" novalidate>
+            {% csrf_token %}
+
+            <!-- Email -->
+            <div class="form-group position-relative mb-3">
+              {{ form.username.label_tag }}
+              <div class="input-group">
+                <input type="text" name="username" id="id_username" class="form-control"
+                  placeholder="nom d'utilisateur" value="{{ form.username.value|default:'' }}"
+                  {% if form.username.errors %}
+                  is-invalid
+                  {% endif %}
+                />
+                <i
+                  class="bi bi-person position-absolute top-50 end-0 translate-middle-y me-2"
+                ></i>
+              </div>
+              {% if form.username.errors %}
+              <div class="invalid-feedback">{{ form.username.errors }}</div>
+              {% endif %}
+            </div>
+
+            <!-- Mot de passe -->
+            <div class="form-group position-relative mb-4">
+              {{ form.password.label_tag }}
+              <div class="input-group">
+                <input type="password" name="password" id="id_password" class="form-control"
+                  placeholder="Mot de passe"
+                  {% if form.password.errors %}
+                  is-invalid
+                  {% endif %}
+                />
+                <i
+                  class="bi bi-lock position-absolute top-50 end-0 translate-middle-y me-2"
+                ></i>
+              </div>
+              {% if form.password.errors %}
+              <div class="invalid-feedback">{{ form.password.errors }}</div>
+              {% endif %}
+            </div>
+
+            <!-- Bouton de connexion -->
+            <div class="form-group text-center mb-3">
+              <button type="submit" class="btn btn-success btn-block">
+                Connexion
+              </button>
+            </div>
+
+            <!-- Liens pour mot de passe oublié et inscription -->
+            <hr />
+            <div class="row">
+              <div class="col text-left">
+                <a href="{% url 'forgot' %}" class="text-danger"
+                  >Mot de passe oublié ?</a
+                >
+              </div>
+              <div class="col text-right">
+                <a href="{% url 'inscription' %}" class="text-primary"
+                  >Inscription</a
+                >
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

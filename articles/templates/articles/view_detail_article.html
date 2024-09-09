@@ -1,0 +1,94 @@
+{% extends 'articles/base.html' %} {% block title %}Détails de
+l'article{%endblock %} {% block content %}
+<style>
+  .edit-btn {
+    position: fixed;
+    right: 10px;
+    top: 300px;
+  }
+  .content-btn {
+    margin: 10px 5px;
+  }
+  .image-article {
+    width: 100%;
+    max-height: 600px;
+  }
+  h1 {
+    text-align: center;
+  }
+</style>
+
+<div class="container">
+  <div class="edit-btn">
+    {%if user.is_authenticated and user == article.autor%}
+    <div class="content-btn">
+      <a
+        href="{%url 'articles:update_article' article.pk%}"
+        class="btn btn-info"
+        ><i class="bi bi-pencil-fill"></i>
+      </a>
+    </div>
+    <div class="content-btn">
+      <a
+        href="{%url 'articles:delete_article' article.pk%}"
+        class="btn btn-danger"
+      >
+        <i class="bi bi-trash3-fill"></i
+      ></a>
+    </div>
+
+    {%endif%}
+
+    <div class="content-btn">
+      <a href="{%url 'articles:article_view'%}" class="btn btn-primary">
+        <i class="bi bi-arrow-left"></i>
+      </a>
+    </div>
+  </div>
+
+  {% if article.imagearticle %}
+  <img
+    src="{{ article.imagearticle.url }}"
+    alt="Image de l'article"
+    class="img-fluid image-article"
+  />
+  {% endif %}
+  <h1>{{ article.title }}</h1>
+  <p> <i><small>{{ article.date_pub }}</small> </i> - publier par   {{article.autor.get_full_name}}</p>
+  <p>{{ article.content }}</p>
+
+
+  <style>
+</style>
+<hr>
+<div class="container comments-section d-flex flex-wrap">
+  {%for comment in article.comment_set.all%}
+    <div class="card">
+      <div class="card-header">
+        {{ comment.user.get_full_name }}
+      </div>
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>{{ comment.comment }}</p>
+          <footer class="blockquote-footer">{{ comment.date_comment }}</footer>
+        </blockquote>
+      </div>
+    </div>
+  {% empty %}
+    <p class="no-comments">Pas de commentaire disponible pour cet article</p>
+  {% endfor %}
+</div>
+
+
+
+
+  {%if user.is_authenticated %}
+  <div class="container comment" style="max-width: 500px;">
+    <form action="{% url 'articles:commentaire' article.pk %}" method="post">
+      {%csrf_token%} {{form.as_p}}
+      <button type="submit" class="btn btn-success">Envoyer</button>
+    </form>
+  </div>
+  {%endif%}
+</div>
+{% endblock %}
