@@ -1,32 +1,6 @@
-# Python
+/venv
 __pycache__/
-
-# Django
+.vscode
 *.sqlite3
-/db.sqlite3
-media/
-# staticfiles/
-
-
-# Environnement virtuel
-venv/
-ENV/
-env/
-
-# IDE
-.vscode/
-.idea/
-
-# OS-specific
-.DS_Store
-*.swp
-
-# PyCharm
-.idea/
-*.iml
-*.ipr
-*.iws
-
-# Jupyter Notebook
-.ipynb_checkpoints/
-
+/media
+/static

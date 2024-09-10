@@ -79,7 +79,7 @@ class Create_categorie(LoginRequiredMixin,CreateView):
     model = Categories
     fields = ['title']
     template_name = 'articles/categories/create_categorie.html'
-    success_url = reverse_lazy('view_categorie')
+    success_url = reverse_lazy('articles:view_categorie')
     
     def form_valid(self, form):
         form.instance.user = self.request.user  
@@ -90,7 +90,7 @@ class Update_categorie(LoginRequiredMixin,UpdateView):
     model = Categories
     fields = ['title']
     template_name = 'articles/categories/update_categorie.html'
-    success_url = reverse_lazy('view_categorie')
+    success_url = reverse_lazy('articles:view_categorie')
     
     
 class View_categorie(ListView):
@@ -102,6 +102,8 @@ class Delete_categorie(LoginRequiredMixin,DeleteView):
     model = Categories
     context_object_name = 'categories'
     template_name = 'articles/categories/delete_categorie.html'
+    success_url = reverse_lazy('articles:view_categorie')
+
 
 
 def categorieselement(request,categorie):

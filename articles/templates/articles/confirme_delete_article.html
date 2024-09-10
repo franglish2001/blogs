@@ -1,5 +1,5 @@
-{% extends 'articles/base.html' %} {% block title %}Confirmer la suppression{% endblock %} 
-{% block content %}
+{% extends 'articles/base.html' %} {% block title %}Confirmer la suppression
+{%endblock %} {% block content %}
 
 <div class="container d-flex justify-content-center">
   <div class="dialog-confirm">
@@ -8,9 +8,7 @@
     <form method="post">
       {% csrf_token %}
       <button type="submit" class="btn btn-danger">Supprimer</button>
-      <a
-        href=""
-        class="btn btn-secondary"
+      <a href="{%url 'articles:article_view'%}" class="btn btn-secondary"
         >Annuler</a
       >
     </form>

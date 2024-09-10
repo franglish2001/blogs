@@ -71,6 +71,7 @@
   </div>
 
   <!-- la page de pagination -->
+   {% if articles %}
   <div class="container d-flex justify-content-center">
     <div class="pagination">
       <span class="step-links">
@@ -90,4 +91,6 @@
       </span>
     </div>
   </div>
+{%endif%}
+
 {% endblock %}
