@@ -1,0 +1,33 @@
+name: pipline ci/cd build
+on:
+  push:
+    branche:
+      - '*'
+
+  pull-request:
+    branche:
+      - '*'
+
+jobs:
+  check_syntaxe:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ['3.12']
+
+    steps:
+      - uses: action/checkout@v2
+      - name: set_up python
+      - uses: action/setup-python@v2
+        with:
+          python-version: '3.12'
+
+      - name: install dependancises
+      - run: |
+          pip install --upgrade pip
+          pip install flak8
+          pip install -r requirements.txt
+
+      - name: check code line
+      - run: |
+          flack8 . --exit-zero

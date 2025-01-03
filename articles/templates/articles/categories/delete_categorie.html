@@ -1,0 +1,18 @@
+{% extends 'articles/base.html' %} {% block title %}Confirmer la suppression
+{%endblock %} {% block content %}
+
+
+<div class="container d-flex justify-content-center">
+  <div class="dialog-confirm">
+    <h1>Supprimer l'article</h1>
+    <p>
+      Êtes-vous sûr de vouloir supprimer l'article "{{ categories.title }}" ?
+    </p>
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-danger">Supprimer</button>
+      <a href="{%url 'articles:view_categorie'%}" class="btn btn-secondary">Annuler</a>
+    </form>
+  </div>
+</div>
+{% endblock %}
