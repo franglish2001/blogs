@@ -1,11 +1,11 @@
-name: pipline ci/cd build
+name: pipeline ci/cd build
+
 on:
   push:
-    branche:
+    branches:
       - '*'
-
   pull_request:
-    branche:
+    branches:
       - '*'
 
 jobs:
@@ -16,18 +16,20 @@ jobs:
         python-version: ['3.12']
 
     steps:
-      - uses: action/checkout@v2
-      - name: set_up python
-      - uses: action/setup-python@v2
+      - name: Checkout repository
+        uses: actions/checkout@v2  # Utilisation de l'action checkout pour récupérer le code
+
+      - name: Set up Python
+        uses: actions/setup-python@v2  # Utilisation de l'action setup-python pour configurer Python
         with:
           python-version: '3.12'
 
-      - name: install dependancises
-      - run: |
+      - name: Install dependencies
+        run: |
           pip install --upgrade pip
-          pip install flak8
-          pip install -r requirements.txt
+          pip install flake8
+          pip install -r requirements.txt  # Exécution de la commande pour installer les dépendances
 
-      - name: check code line
-      - run: |
-          flack8 . --exit-zero
+      - name: Check code syntax
+        run: |
+          flake8 . --exit-zero  # Exécution de flake8 pour vérifier la syntaxe du code
