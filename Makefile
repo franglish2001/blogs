@@ -9,4 +9,4 @@ start_docker_compose:
 
 .PHONY: tests
 tests:
-	pytest --cov --cov-report term-missign
+	pytest --cov --cov-report term-missing
