@@ -17,8 +17,8 @@ jobs:
 
     steps:
       - name: python set-up
-        uses: action/checkout@v2
-        uses: action/setup-python@v2
+        uses: actions/checkout@v2
+        uses: actions/setup-python@v2
         with:
           python-version: 3.12
 
@@ -47,8 +47,8 @@ jobs:
 
     steps:
       - name: check syntaxe
-        uses: action/checkout@v2
-        uses: action/setup-python@v2
+        uses: actions/checkout@v2
+        uses: actions/setup-python@v2
         with:
           python-version: 3.12
 
@@ -65,7 +65,7 @@ jobs:
     needs: 'test'
 
     steps:
-      - uses: action/checkout@v2
+      - uses: actions/checkout@v2
       - name: docker login
         env:
           - username: ${{secrets.DOCKERHUB_USER}}
