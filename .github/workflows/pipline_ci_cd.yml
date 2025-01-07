@@ -71,7 +71,7 @@ jobs:
             username: ${{ secrets.DOCKERHUB_USER }}
             password: ${{ secrets.DOCKERHUB_PASSWORD }}
           run: |
-            docker login -u $username -p $password
+            docker login -u dounoh0 -p Gnouma2011
         - name: docker build and push
           run: |
             docker build . -t dounoh0/blog:latest
