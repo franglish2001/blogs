@@ -41,13 +41,13 @@ jobs:
         ports:
           - 5459:5432
         env:
-          - POSTGRES_USER: blog
-          - POSTGRES_PASSWORD : blog
-          - POSTGRES_DB: blog_test
+          POSTGRES_USER: blog
+          POSTGRES_PASSWORD : blog
+          POSTGRES_DB: blog_test
 
     steps:
       - name: check syntaxe
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         uses: actions/setup-python@v2
         with:
           python-version: 3.12
