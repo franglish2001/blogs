@@ -10,14 +10,14 @@ on:
 
 jobs:
   check_syntaxe:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ['3.12']
 
     steps:
       - name: python set-up
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
         uses: actions/setup-python@v2
         with:
           python-version: 3.12
