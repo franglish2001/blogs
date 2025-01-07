@@ -68,8 +68,8 @@ jobs:
       - uses: actions/checkout@v2
       - name: docker login
         env:
-          - username: ${{secrets.DOCKERHUB_USER}}
-          - password: ${{secrets.DOCKERHUB_PASSWORD}}
+          username: ${{secrets.DOCKERHUB_USER}}
+          password: ${{secrets.DOCKERHUB_PASSWORD}}
         run: |
           docker login -u $username -p $password
       - name: docker buil and push
