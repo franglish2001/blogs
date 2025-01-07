@@ -46,8 +46,8 @@ jobs:
           POSTGRES_DB: blog_test
 
     steps:
-      - name: check syntaxe
       - uses: actions/checkout@v2
+      - name: check syntaxe
         uses: actions/setup-python@v2
         with:
           python-version: 3.12
