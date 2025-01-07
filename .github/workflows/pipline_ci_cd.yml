@@ -56,8 +56,8 @@ jobs:
         run: |
           make install_dev
       - name: run tests
-          run: |
-            make tests
+        run: |
+          make tests
 
   build_image:
     name: build and push docker image
@@ -65,14 +65,14 @@ jobs:
     needs: 'test'
 
     steps:
-        uses: action/checkout@v2
-        - name: docker login
-          env:
-            - username: ${{secrets.DOCKERHUB_USER}}
-            - password: ${{secrets.DOCKERHUB_PASSWORD}}
-          run: |
-            docker login -u $username -p $password
-        - name: docker buil and push
-          run: |
-            docker build . -t dounoh0/blog:latest
-            docker push dounoh0/blog:latest
+      - uses: action/checkout@v2
+      - name: docker login
+        env:
+          - username: ${{secrets.DOCKERHUB_USER}}
+          - password: ${{secrets.DOCKERHUB_PASSWORD}}
+        run: |
+          docker login -u $username -p $password
+      - name: docker buil and push
+        run: |
+          docker build . -t dounoh0/blog:latest
+          docker push dounoh0/blog:latest
