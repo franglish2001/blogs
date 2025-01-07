@@ -1,6 +1,6 @@
 .PHONY: install_dev
 install_dev:
-	python -m pip install -r requirement.txt
+	python -m pip install -r requirements.txt
 	pip install pre-commit
 
 .PHONY: start_docker_compose
