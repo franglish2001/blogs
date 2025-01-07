@@ -71,7 +71,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
         run: |
-          echo "$password" | docker login -u --$username -p
+          echo "$password" | docker login -u "$username" --password-stdin
       - name: docker buil and push
         run: |
           docker build . -t dounoh0/blog:latest
