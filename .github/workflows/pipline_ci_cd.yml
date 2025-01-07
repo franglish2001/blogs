@@ -16,8 +16,8 @@ jobs:
         python-version: ['3.12']
 
     steps:
-      - name: python set-up
       - uses: actions/checkout@v2
+      - name: python set-up
         uses: actions/setup-python@v2
         with:
           python-version: 3.12
@@ -33,7 +33,7 @@ jobs:
           flake8 . --exit-zero
 
   test:
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     needs: ['check_syntaxe']
     services:
       db:
@@ -61,7 +61,7 @@ jobs:
 
   build_image:
     name: build and push docker image
-    runs_on: ubuntu-latest
+    runs-on: ubuntu-latest
     needs: 'test'
 
     steps:
